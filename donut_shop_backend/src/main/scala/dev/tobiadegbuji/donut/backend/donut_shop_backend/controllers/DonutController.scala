@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.{GetMapping, PathVariable, PostMa
 class DonutController(donutService: DonutService) {
 
   @GetMapping(Array("/v1/donut"))
-  def getAllDonuts() = donutService.getAllDonuts()
+  def getAllDonuts(): java.util.List[Donut] = donutService.getAllDonuts
 
   @GetMapping(Array("/v1/donut/{id}"))
   def getDonut(@PathVariable id: Long): Donut = donutService.getDonutById(id)
