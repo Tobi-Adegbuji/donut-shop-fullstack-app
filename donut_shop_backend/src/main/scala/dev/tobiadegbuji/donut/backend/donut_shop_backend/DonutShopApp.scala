@@ -9,6 +9,4 @@ class DonutShopApp
 
 object DonutShopApp extends App{
   SpringApplication.run(classOf[DonutShopApp], args:_*)
-  println("Testing")
-  println("Testing Again")
 }
