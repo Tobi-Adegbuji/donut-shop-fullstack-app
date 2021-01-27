@@ -9,7 +9,7 @@ class DonutServiceImpl(donutRepo: DonutRepo) extends DonutService {
 
   override def getAllDonuts(): java.util.List[Donut] = donutRepo.findAll()
 
-  override def getDonutById(id: Long): Donut = ???
+  override def getDonutById(id: Long): Donut = donutRepo.findById(id).get()
 
   override def updateAllDonuts(): Unit = ???
 
