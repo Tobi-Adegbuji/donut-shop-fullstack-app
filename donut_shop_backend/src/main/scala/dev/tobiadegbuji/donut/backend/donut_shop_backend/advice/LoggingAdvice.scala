@@ -1,26 +1,23 @@
-package dev.tobiadegbuji.donut.backend.donut_shop_backend.advice
-
-import com.fasterxml.jackson.databind.ObjectMapper
-import org.aspectj.lang.ProceedingJoinPoint
-import org.aspectj.lang.annotation.Aspect
-import org.slf4j.LoggerFactory
-import org.springframework.stereotype.Component
-
-@Aspect
-@Component
-class LoggingAdvice {
-
-  val log = LoggerFactory.getLogger(classOf[LoggingAdvice])
-
-
-  //ProceedingJointPoint exposes the proceed(...) method in order ro support around advice in @Aj aspects
-  def applicationLogger(pjp: ProceedingJoinPoint) = {
-      val mapper = new ObjectMapper()
-      val methodName = pjp.getSignature.getName
-      val className = pjp.getTarget.getClass.toString
-      val args = pjp.getArgs
-      log.info(s"Method invoked $className $methodName() arguments: " +
-        s"${mapper.writeValueAsString(args)}")
-  }
-
-}
+//package dev.tobiadegbuji.donut.backend.donut_shop_backend.advice
+//
+//import com.fasterxml.jackson.databind.ObjectMapper
+//import lombok.Data
+//import org.aspectj.lang.ProceedingJoinPoint
+//import org.aspectj.lang.annotation.{Aspect, Before}
+//import org.slf4j.LoggerFactory
+//import org.springframework.context.annotation.EnableAspectJAutoProxy
+//import org.springframework.stereotype.Component
+//
+//@Aspect //Cross cutting concerns are ket within aspects
+//@EnableAspectJAutoProxy //Enables Spring AOP for Advice
+//@Data
+//@Component
+//class LoggingAdvice {
+//
+//  //Advice: is what should be shown. Two main types are before and after
+//  @Before("execution(* dev.tobiadegbuji.donut.backend.BootstrapData.bootstrap())") //pointcut -> where you want to show advice
+//  def log = {
+//  println("Printed Donuts")
+//  }
+//
+//}
