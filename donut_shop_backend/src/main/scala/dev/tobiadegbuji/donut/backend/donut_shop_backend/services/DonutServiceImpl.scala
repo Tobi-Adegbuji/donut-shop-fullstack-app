@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service
 
 import java.util.List
 
-@Slf4j
 @Service
 class DonutServiceImpl(donutRepo: DonutRepo) extends DonutService {
   override def createDonut(donut: Donut): Unit = ???
@@ -15,7 +14,6 @@ class DonutServiceImpl(donutRepo: DonutRepo) extends DonutService {
     val donutList = donutRepo.findAll()
     donutList.forEach(donut => println(donut))
     donutList
-
   }
 
   override def getDonutById(id: Long): Donut = donutRepo.findById(id).get()
