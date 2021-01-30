@@ -15,13 +15,13 @@ class BootstrapData(donutService: DonutService, nutritionService: NutritionServi
 
     //Bootstrap Nutrition data
     List(
-      new Nutrition(245),
-      new Nutrition(350),
-      new Nutrition(500),
-      new Nutrition(400),
-      new Nutrition(75),
-      new Nutrition(320),
-      new Nutrition(220),
+      new Nutrition(1,245),
+      new Nutrition(2,350),
+      new Nutrition(3,500),
+      new Nutrition(4,400),
+      new Nutrition(5,75),
+      new Nutrition(6,320),
+      new Nutrition(7,220),
     ).foreach(nutrition => nutritionService.createNutrition(nutrition))
 
 

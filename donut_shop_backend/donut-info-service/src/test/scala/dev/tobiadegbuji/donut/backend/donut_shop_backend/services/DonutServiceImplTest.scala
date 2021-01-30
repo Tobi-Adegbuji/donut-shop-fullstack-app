@@ -18,7 +18,7 @@ class DonutServiceImplTest {
   @DisplayName("Test should return a single Donut by ID")
   def shouldReturnDonutById(): Unit ={
     val donutServiceImpl = new DonutServiceImpl(donutRepoMock)
-    val donut1 = new Donut(123L,"Glazed Donut", 3.99, DonutType.YEAST, new Nutrition(234))
+    val donut1 = new Donut(123L,"Glazed Donut", 3.99, DonutType.YEAST, new Nutrition(1,234))
     Mockito.when(donutRepoMock.findById(123L)).thenReturn(Optional.of(donut1))
   }
 
@@ -26,8 +26,8 @@ class DonutServiceImplTest {
   @DisplayName("Test should return a list of Donuts")
   def shouldReturnAllDonutsInDB(): Unit ={
     val donutServiceImpl = new DonutServiceImpl(donutRepoMock)
-    val donut1 = new Donut(1,"Glazed Donut", 3.99, DonutType.YEAST, new Nutrition(234))
-    val donut2 = new Donut(2,"Spicy Churro", 2.99, DonutType.CHURRO, new Nutrition(125))
+    val donut1 = new Donut(1,"Glazed Donut", 3.99, DonutType.YEAST, new Nutrition(1,234))
+    val donut2 = new Donut(2,"Spicy Churro", 2.99, DonutType.CHURRO, new Nutrition(2,125))
 
     //Mockito.when(donutRepoMock.findAll()).thenReturn(new util.List[Donut] {})
   }

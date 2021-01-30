@@ -13,7 +13,7 @@ class Nutrition {
   @BeanProperty
   var calories: Int = _
 
-  def this(calories: Int) = {
+  def this(id: Int, calories: Int) = {
     this()
     this.calories = calories
   }

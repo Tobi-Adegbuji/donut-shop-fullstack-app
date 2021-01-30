@@ -1,7 +1,9 @@
 package dev.tobiadegbuji.donut.backend.donut_shop_backend.model
 
+import org.hibernate.annotations.{Cascade, CascadeType}
+
 import scala.beans.BeanProperty
-import javax.persistence.{Entity, EnumType, Enumerated, GeneratedValue, GenerationType, Id, OneToOne}
+import javax.persistence.{Column, Entity, EnumType, Enumerated, GeneratedValue, GenerationType, Id, OneToOne}
 
 @Entity
 class Donut {
@@ -21,6 +23,7 @@ class Donut {
   @BeanProperty
   var donutType: DonutType = _
 
+  @Cascade(Array(CascadeType.ALL))
   @OneToOne
   var nutrition: Nutrition = _
 
