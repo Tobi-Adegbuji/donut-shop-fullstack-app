@@ -1,6 +1,7 @@
 package dev.tobiadegbuji.donut.backend.donut_shop_backend.services
 import dev.tobiadegbuji.donut.backend.donut_shop_backend.model.Donut
 import dev.tobiadegbuji.donut.backend.donut_shop_backend.repositories.DonutRepo
+import org.apache.logging.log4j.Logger
 import org.springframework.stereotype.Service
 
 import java.util.List
@@ -8,11 +9,12 @@ import java.util.List
 @Service
 class DonutServiceImpl(donutRepo: DonutRepo) extends DonutService {
 
+
   override def createDonut(donut: Donut) = donutRepo.save(donut)
 
   override def getAllDonuts: List[Donut] = {
     val donutList = donutRepo.findAll()
-    donutList.forEach(donut => println(donut))
+//    log.info("All Donuts have been retrieved.")
     donutList
   }
 

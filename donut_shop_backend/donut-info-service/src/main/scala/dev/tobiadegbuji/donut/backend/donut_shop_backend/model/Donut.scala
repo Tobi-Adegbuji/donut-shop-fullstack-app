@@ -26,8 +26,9 @@ class Donut {
 
   override def toString: String = s"$id: $name"
 
-  def this(name: String, price: Double, donutType: DonutType, nutrition: Nutrition) {
+  def this(id: Long, name: String, price: Double, donutType: DonutType, nutrition: Nutrition) {
     this()
+    this.id = id
     this.name = name
     this.price = price
     this.donutType = donutType

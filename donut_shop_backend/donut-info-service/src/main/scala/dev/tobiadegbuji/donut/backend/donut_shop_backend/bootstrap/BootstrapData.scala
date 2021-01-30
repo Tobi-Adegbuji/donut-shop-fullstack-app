@@ -29,13 +29,13 @@ class BootstrapData(donutService: DonutService, nutritionService: NutritionServi
 
     //Bootstrap Donut data
     List(
-      new Donut("Chocolate Jelly Glazed", 3.69,DonutType.JELLY, nutrition(1)),
-      new Donut("Original Glazed", 1.50,DonutType.YEAST, nutrition(2)),
-      new Donut("Vanilla Swirl Cake", 4.99,DonutType.CAKE, nutrition(3)),
-      new Donut("Lemon Filled Donut", 2.99,DonutType.BOSTON_CREAM, nutrition(4)),
-      new Donut("Cinnamon Churro", 0.99,DonutType.CHURRO, nutrition(5)),
-      new Donut("Plain Donut", 1.39,DonutType.YEAST, nutrition(6)),
-      new Donut("Sprinkled Glaze Donut", 2.59,DonutType.YEAST, nutrition(7))
+      new Donut(1,"Chocolate Jelly Glazed", 3.69,DonutType.JELLY, nutrition(1)),
+      new Donut(2,"Original Glazed", 1.50,DonutType.YEAST, nutrition(2)),
+      new Donut(3,"Vanilla Swirl Cake", 4.99,DonutType.CAKE, nutrition(3)),
+      new Donut(4,"Lemon Filled Donut", 2.99,DonutType.BOSTON_CREAM, nutrition(4)),
+      new Donut(5,"Cinnamon Churro", 0.99,DonutType.CHURRO, nutrition(5)),
+      new Donut(6,"Plain Donut", 1.39,DonutType.YEAST, nutrition(6)),
+      new Donut(7, "Sprinkled Glaze Donut", 2.59,DonutType.YEAST, nutrition(7))
     ).foreach(donut => donutService.createDonut(donut))
 
 

@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 trait DonutRepo extends JpaRepository[Donut, Long]{
-
+  def findDonutByName:String
 }
