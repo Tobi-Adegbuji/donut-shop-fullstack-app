@@ -1,9 +1,11 @@
 package dev.tobiadegbuji.donut.backend.donut_shop_backend.model
 
 import org.hibernate.annotations.{Cascade, CascadeType}
+import org.hibernate.validator.constraints.Currency
 
 import scala.beans.BeanProperty
 import javax.persistence.{Column, Entity, EnumType, Enumerated, GeneratedValue, GenerationType, Id, OneToOne}
+import javax.validation.constraints.{Max, NotEmpty}
 
 @Entity
 class Donut {
@@ -13,7 +15,7 @@ class Donut {
   @BeanProperty
   var id: Long = _
 
-
+  @NotEmpty
   @BeanProperty
   var name: String = _
 

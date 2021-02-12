@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.{GetMapping, PathVariable, PostMapping, RequestBody, RequestMapping, RestController}
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 
+import javax.validation.Valid
+
 @Slf4j
 @RestController
 @RequestMapping(Array("/v1/donut"))
@@ -26,7 +28,7 @@ class DonutController(donutService: DonutService) {
   }
 
   @PostMapping
-  def createDonut(@RequestBody donut: Donut) = {
+  def createDonut(@Valid @RequestBody donut: Donut) = {
     val d = donutService.createDonut(donut)
     //Adds location to response header along with a 210 created status code
     val uri = ServletUriComponentsBuilder.fromCurrentRequest().path(s"/${d.getId}")
