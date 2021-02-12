@@ -1,5 +1,6 @@
 package dev.tobiadegbuji.donut.backend.donut_shop_backend.controllers
 
+import dev.tobiadegbuji.donut.backend.donut_shop_backend.exception.DonutNotFoundException
 import dev.tobiadegbuji.donut.backend.donut_shop_backend.model.Donut
 import dev.tobiadegbuji.donut.backend.donut_shop_backend.services.DonutService
 import lombok.extern.java.Log
@@ -20,11 +21,7 @@ class DonutController(donutService: DonutService) {
 
   @GetMapping(Array("/{id}"))
   def getDonut(@PathVariable id: Long) = {
-    val donutOption = Option(donutService.getDonutById(id))
-    val donut = donutOption match{
-      case Some(value) => value
-      case None => ResponseEntity.notFound().build()
-    }
+    val donut = donutService.getDonutById(id)
     donut
   }
 

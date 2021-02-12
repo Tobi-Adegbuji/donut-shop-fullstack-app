@@ -5,7 +5,6 @@ import org.springframework.stereotype.{Component, Service}
 
 @Service
 class NutritionServiceImpl(nutritionRepo: NutritionRepo) extends NutritionService {
-
   override def createNutrition(nutrition: Nutrition): Unit = nutritionRepo.save(nutrition)
   override def getNutritionById(id: Long) = nutritionRepo.findById(id).get()
 }

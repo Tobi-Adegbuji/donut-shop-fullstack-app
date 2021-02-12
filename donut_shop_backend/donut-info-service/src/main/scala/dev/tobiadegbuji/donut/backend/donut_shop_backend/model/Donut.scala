@@ -13,6 +13,7 @@ class Donut {
   @BeanProperty
   var id: Long = _
 
+
   @BeanProperty
   var name: String = _
 
