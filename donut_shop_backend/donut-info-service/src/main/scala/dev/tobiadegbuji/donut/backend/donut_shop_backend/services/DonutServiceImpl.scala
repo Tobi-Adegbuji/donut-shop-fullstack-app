@@ -14,7 +14,7 @@ class DonutServiceImpl(donutRepo: DonutRepo) extends DonutService {
   override def createDonut(donut: Donut) = donutRepo.save(donut)
 
   override def getAllDonuts: List[Donut] = {
-    val donutList = donutRepo.findAll()
+    val donutList = donutRepo.findAll
 //    log.info("All Donuts have been retrieved.")
     donutList
   }
@@ -23,7 +23,7 @@ class DonutServiceImpl(donutRepo: DonutRepo) extends DonutService {
     val donutOptional = donutRepo.findById(id)
     if(!donutOptional.isPresent)
       throw new ResourceNotFoundException(id, "Donut")
-    else donutOptional.get()
+    else donutOptional.get
   }
 
   override def updateAllDonuts: Unit = ???
