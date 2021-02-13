@@ -36,7 +36,7 @@ class BootstrapData(donutService: DonutService, nutritionService: NutritionServi
       new Donut(5,"Cinnamon Churro", 0.99,DonutType.CHURRO, nutrition(5)),
       new Donut(6,"Plain Donut", 1.39,DonutType.YEAST, nutrition(6)),
       new Donut(7, "Sprinkled Glaze Donut", 2.59,DonutType.YEAST, nutrition(7))
-    ).foreach(donut => donutService.createDonut(donut))
+    ).foreach(donut => donutService.saveDonut(donut))
 
 
 

@@ -4,11 +4,13 @@ import com.amazonaws.services.s3.AmazonS3
 import com.amazonaws.services.s3.model.PutObjectRequest
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.scheduling.annotation.Async
+import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
 
 import java.io.{File, FileOutputStream, IOException, OutputStream}
 import java.time.LocalDateTime
 
+@Service
 class AWSS3ServiceImpl(private val amazonS3: AmazonS3, @Value("${aws.s3.bucket}") private val bucketName: String) extends AWSS3Service {
 
   private val log = org.slf4j.LoggerFactory.getLogger(classOf[AWSS3ServiceImpl])
@@ -20,7 +22,9 @@ class AWSS3ServiceImpl(private val amazonS3: AmazonS3, @Value("${aws.s3.bucket}"
       log.info(s"File Upload in progress for: ${file.getName}")
       uploadFileToS3Bucket(bucketName,file)
       log.info(s"File upload complete for: ${file.getName}")
-      file.delete() //Removes it locally
+
+      if (file.delete) log.info(s"Local file with name ${file.getName} was successfully deleted")
+      else log.error(s"Local file with name ${file.getName} was NOT deleted")
     }
     catch {
       case e: AmazonServiceException =>

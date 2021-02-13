@@ -1,12 +1,14 @@
 package dev.tobiadegbuji.donut.backend.donut_shop_backend.model
 
+import lombok.Builder
 import org.hibernate.annotations.{Cascade, CascadeType}
 import org.hibernate.validator.constraints.Currency
 
 import scala.beans.BeanProperty
-import javax.persistence.{Column, Entity, EnumType, Enumerated, GeneratedValue, GenerationType, Id, OneToOne}
+import javax.persistence.{Column, Entity, EnumType, Enumerated, GeneratedValue, GenerationType, Id, OneToMany, OneToOne}
 import javax.validation.constraints.{Max, NotEmpty, Size}
 
+@Builder
 @Entity
 class Donut {
 
@@ -22,6 +24,9 @@ class Donut {
 
   @BeanProperty
   var price: Double = _
+
+  @BeanProperty
+  var imageUrl: String = _
 
   @Enumerated(EnumType.STRING)
   @BeanProperty
