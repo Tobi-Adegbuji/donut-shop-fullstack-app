@@ -5,6 +5,7 @@ import dev.tobiadegbuji.donut.backend.donut_shop_backend.repositories.DonutRepo
 import lombok.Builder
 import org.apache.logging.log4j.Logger
 import org.springframework.stereotype.Service
+import org.springframework.web.multipart.MultipartFile
 
 import java.util.List
 
@@ -36,4 +37,13 @@ class DonutServiceImpl(donutRepo: DonutRepo, awsS3Service: AWSS3Service) extends
   override def deleteAllDonuts: Unit = ???
 
   override def deleteDonutById(id: Long): Unit = ???
+
+  override def updateDonutImageById(id: Long, multipartFile: MultipartFile): String = {
+    val donut:Donut = getDonutById(id)
+    awsS3Service.uploadFile(multipartFile)
+    val donutImgURL: String = awsS3Service.getS3ObjectURL()
+    donut.setImageUrl(donutImgURL)
+    donutRepo.save(donut)
+    donutImgURL
+  }
 }

@@ -1,18 +1,18 @@
 package dev.tobiadegbuji.donut.backend.donut_shop_backend.controllers
 
 import dev.tobiadegbuji.donut.backend.donut_shop_backend.model.Donut
-import dev.tobiadegbuji.donut.backend.donut_shop_backend.services.{AWSS3Service, DonutService}
-import lombok.extern.slf4j.Slf4j
-import org.springframework.http.{HttpStatus, ResponseEntity}
+import dev.tobiadegbuji.donut.backend.donut_shop_backend.services.DonutService
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation._
 import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 
+import java.net.URI
 import javax.validation.Valid
 
 @RestController
 @RequestMapping(Array("api/v1/donut"))
-class DonutController(donutService: DonutService, awsS3Service: AWSS3Service) {
+class DonutController(donutService: DonutService) {
 
 
   @GetMapping
@@ -37,10 +37,15 @@ class DonutController(donutService: DonutService, awsS3Service: AWSS3Service) {
     ResponseEntity.created(uri).build()
   }
 
-  @PutMapping(Array{"/uploadImage"})
-  def uploadDonutImage(@RequestPart(value = "file") multipartFile: MultipartFile): ResponseEntity[String] ={
-    awsS3Service.uploadFile(multipartFile)
-    new ResponseEntity[String]("", HttpStatus.CREATED)
+  @PutMapping(Array{"/{donutId}/uploadImage"})
+  def uploadDonutImage(@RequestPart(value = "file") multipartFile: MultipartFile, @PathVariable donutId:Long): ResponseEntity[String] ={
+    val resourceUrl: String = donutService.updateDonutImageById(donutId, multipartFile)
+
+    val uri: URI = new URI(resourceUrl)
+
+    ResponseEntity.created(uri).build()
+
+
   }
 
 }
