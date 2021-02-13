@@ -1,18 +1,14 @@
 package dev.tobiadegbuji.donut.backend.donut_shop_backend.controllers
 
-import dev.tobiadegbuji.donut.backend.donut_shop_backend.exception.DonutNotFoundException
 import dev.tobiadegbuji.donut.backend.donut_shop_backend.model.Donut
 import dev.tobiadegbuji.donut.backend.donut_shop_backend.services.DonutService
-import lombok.extern.java.Log
 import lombok.extern.slf4j.Slf4j
-import org.slf4j.Logger
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.{GetMapping, PathVariable, PostMapping, RequestBody, RequestMapping, RestController}
+import org.springframework.web.bind.annotation._
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 
 import javax.validation.Valid
 
-@Slf4j
 @RestController
 @RequestMapping(Array("/v1/donut"))
 class DonutController(donutService: DonutService) {

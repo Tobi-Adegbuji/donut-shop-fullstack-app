@@ -1,5 +1,5 @@
 package dev.tobiadegbuji.donut.backend.donut_shop_backend.services
-import dev.tobiadegbuji.donut.backend.donut_shop_backend.exception.DonutNotFoundException
+import dev.tobiadegbuji.donut.backend.donut_shop_backend.exception.ResourceNotFoundException
 import dev.tobiadegbuji.donut.backend.donut_shop_backend.model.Donut
 import dev.tobiadegbuji.donut.backend.donut_shop_backend.repositories.DonutRepo
 import org.apache.logging.log4j.Logger
@@ -22,7 +22,7 @@ class DonutServiceImpl(donutRepo: DonutRepo) extends DonutService {
   override def getDonutById(id: Long) = {
     val donutOptional = donutRepo.findById(id)
     if(!donutOptional.isPresent)
-      throw new DonutNotFoundException(id)
+      throw new ResourceNotFoundException(id, "Donut")
     else donutOptional.get()
   }
 
