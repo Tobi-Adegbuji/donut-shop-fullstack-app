@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.Currency
 
 import scala.beans.BeanProperty
 import javax.persistence.{Column, Entity, EnumType, Enumerated, GeneratedValue, GenerationType, Id, OneToOne}
-import javax.validation.constraints.{Max, NotEmpty}
+import javax.validation.constraints.{Max, NotEmpty, Size}
 
 @Entity
 class Donut {
@@ -15,7 +15,8 @@ class Donut {
   @BeanProperty
   var id: Long = _
 
-  @NotEmpty
+  @Size(min = 5, max = 50, message = "Donut Name must bee between 5 and 50 characters")
+  @NotEmpty(message = "Donut Name cannot be null or empty")
   @BeanProperty
   var name: String = _
 
