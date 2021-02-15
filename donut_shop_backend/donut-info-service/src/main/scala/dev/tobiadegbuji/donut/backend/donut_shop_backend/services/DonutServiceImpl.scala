@@ -13,7 +13,7 @@ import java.util.List
 class DonutServiceImpl(donutRepo: DonutRepo, awsS3Service: AWSS3Service) extends DonutService {
 
 
-  override def saveDonut(donut: Donut) = donutRepo.save(donut)
+  override def saveDonut(donut: Donut): Donut = donutRepo.save(donut)
 
   override def getAllDonuts: List[Donut] = {
     val donutList = donutRepo.findAll

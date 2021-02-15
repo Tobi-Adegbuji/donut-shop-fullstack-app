@@ -37,15 +37,11 @@ class DonutController(donutService: DonutService) {
     ResponseEntity.created(uri).build()
   }
 
-  @PutMapping(Array{"/{donutId}/uploadImage"})
-  def uploadDonutImage(@RequestPart(value = "file") multipartFile: MultipartFile, @PathVariable donutId:Long): ResponseEntity[String] ={
+  @PutMapping(Array("/{donutId}/uploadImage"))
+  def uploadDonutImage(@RequestPart(value = "file") multipartFile: MultipartFile, @PathVariable donutId: Long): ResponseEntity[String] = {
     val resourceUrl: String = donutService.updateDonutImageById(donutId, multipartFile)
-
     val uri: URI = new URI(resourceUrl)
-
     ResponseEntity.created(uri).build()
-
-
   }
 
 }

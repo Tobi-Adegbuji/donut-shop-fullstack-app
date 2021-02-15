@@ -1,6 +1,6 @@
 package dev.tobiadegbuji.donut.backend.donut_shop_backend.model
 
-import lombok.Builder
+import lombok.{Builder, NoArgsConstructor}
 import org.hibernate.annotations.{Cascade, CascadeType}
 import org.hibernate.validator.constraints.Currency
 
@@ -9,6 +9,7 @@ import javax.persistence.{Column, Entity, EnumType, Enumerated, GeneratedValue, 
 import javax.validation.constraints.{Max, NotEmpty, Size}
 
 @Builder
+@NoArgsConstructor
 @Entity
 class Donut {
 
